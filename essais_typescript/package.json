@@ -1,0 +1,15 @@
+{
+  "name": "essais-typescipt",
+  "version": "1.0.0",
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "start": "npm run tsc:w"
+  },
+  "license": "ISC",
+  "dependencies": {
+     },
+  "devDependencies": {
+      "typescript": "^1.7.3"
+  }
+}
