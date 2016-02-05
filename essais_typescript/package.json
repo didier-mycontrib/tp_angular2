@@ -4,6 +4,7 @@
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w",
+	"tsc:tES5" : "tsc -t ES5",
     "start": "npm run tsc:w"
   },
   "license": "ISC",
