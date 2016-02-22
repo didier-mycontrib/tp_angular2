@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+/* import {Injector} from 'angular2/core'; */
 import {OnInit} from 'angular2/core';
 import {Hero} from './hero';
 import {HeroDetailComponent} from './hero-detail.component';
@@ -42,18 +43,27 @@ import {HeroService} from './hero.service';
     .heroes .badge {  color: white;   background-color: green;
     }
   `] , 
-   directives: [HeroDetailComponent] ,
-   providers: [HeroService]
+   directives: [HeroDetailComponent] /* ,
+   providers: [HeroService] */
 })
 export class AppComponent implements OnInit{
   public title :string = 'Tour of Heroes';
   public heroes : Hero[];
   public selectedHero: Hero;
-  constructor(private _heroService: HeroService) {
+  private _heroService: HeroService;
+  constructor(heroService: HeroService) {
+    this._heroService=heroService;
     //keep it simple (don't retreive data at this early stage)
 	//ngOnInit() of OnInit LifeCycle interface is a better stage
 	//the "_" first character is a convention for private property name
   } ;
+
+  /*
+  constructor (){
+     var injector = Injector.resolveAndCreate([HeroService]);
+     this._heroService = injector.get(HeroService);
+  }
+  */
   fetchHeroes() {
     // (pre version without Promise):   this.heroes = this._heroService.getHeroes();
 	this._heroService.getHeroesPromise().then(arrayOfHero => this.heroes = arrayOfHero);

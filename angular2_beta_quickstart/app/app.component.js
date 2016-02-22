@@ -37,14 +37,20 @@ System.register(['angular2/core', './hero-detail.component', './hero.service'], 
                 ngOnInit() of OnInit interface is a angular2 lifeCycle init method (like @PostConstruct in java/jee)
             */
             AppComponent = (function () {
-                function AppComponent(_heroService) {
-                    this._heroService = _heroService;
+                function AppComponent(heroService) {
                     this.title = 'Tour of Heroes';
+                    this._heroService = heroService;
                     //keep it simple (don't retreive data at this early stage)
                     //ngOnInit() of OnInit LifeCycle interface is a better stage
                     //the "_" first character is a convention for private property name
                 }
                 ;
+                /*
+                constructor (){
+                   var injector = Injector.resolveAndCreate([HeroService]);
+                   this._heroService = injector.get(HeroService);
+                }
+                */
                 AppComponent.prototype.fetchHeroes = function () {
                     var _this = this;
                     // (pre version without Promise):   this.heroes = this._heroService.getHeroes();
@@ -59,8 +65,8 @@ System.register(['angular2/core', './hero-detail.component', './hero.service'], 
                         selector: 'my-app',
                         template: "\n    <h1>{{title}}</h1>\n    <h2>My Heroes</h2>\n    <ul class=\"heroes\">\n      <li *ngFor=\"#hero of heroes\"  [class.selected]=\"hero === selectedHero\"   (click)=\"onSelect(hero)\">\n        <span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n      </li>\n    </ul>\n\t\n    <my-hero-detail  [hero]=\"selectedHero\" ></my-hero-detail>\n  ",
                         styles: ["\n    .selected {\t width: 150;  background-color: yellow;    color: blue;\n    }\n    .heroes {  color: green;\n    }\n\t .heroes li:hover { color: red;   background-color: white;\n    }\n    .heroes .badge {  color: white;   background-color: green;\n    }\n  "],
-                        directives: [hero_detail_component_1.HeroDetailComponent],
-                        providers: [hero_service_1.HeroService]
+                        directives: [hero_detail_component_1.HeroDetailComponent] /* ,
+                        providers: [HeroService] */
                     }), 
                     __metadata('design:paramtypes', [hero_service_1.HeroService])
                 ], AppComponent);
