@@ -3,6 +3,20 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+var CompteEpargne = (function () {
+    function CompteEpargne(numero, solde) {
+        if (solde === void 0) { solde = 0; }
+        this.numero = numero;
+        this.solde = solde;
+    }
+    CompteEpargne.prototype.calculerInteret = function () {
+        return this.solde * CompteEpargne.taux / 100;
+    };
+    CompteEpargne.taux = 1.5;
+    return CompteEpargne;
+})();
+var compteEpargne = new CompteEpargne(1, 200.0);
+console.log("interet=" + compteEpargne.calculerInteret());
 var Animal = (function () {
     function Animal(theName) {
         if (theName === void 0) { theName = "default animal name"; }

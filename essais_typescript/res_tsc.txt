@@ -1,4 +1,4 @@
 
-> essais-typescipt@1.0.0 tsc:tES5 C:\tp\tp_angular2\essais_typescript
-> tsc -t ES5 "test_classes.ts"
+> essais-typescipt@1.0.0 tsc C:\tp\tp_angular2\essais_typescript
+> tsc "test-fonctions.ts"
 

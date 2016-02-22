@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "tsc": "tsc",
+	"tsc:m": "tsc --module commonjs",
     "tsc:w": "tsc -w",
 	"tsc:tES5" : "tsc -t ES5",
     "start": "npm run tsc:w"

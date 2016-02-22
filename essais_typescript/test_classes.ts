@@ -1,3 +1,15 @@
+class CompteEpargne {
+	static taux : number = 1.5;
+	constructor(public numero : number , public solde :number = 0 ){
+	}
+	calculerInteret(){
+	  return this.solde * CompteEpargne.taux / 100 ;
+    }
+}
+
+var compteEpargne = new CompteEpargne(1,200.0);
+console.log("interet=" + compteEpargne.calculerInteret());
+
 class Animal {
     private _size : number;
     name:string;

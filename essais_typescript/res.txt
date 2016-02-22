@@ -1,0 +1,6 @@
+"Hello"  does not match ZIP code
+"Hello"  matches Letters only
+"98052"  matches ZIP code
+"98052"  does not match Letters only
+"101"  does not match ZIP code
+"101"  does not match Letters only
