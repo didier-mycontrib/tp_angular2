@@ -1,15 +1,18 @@
-export interface Adresse {
-    idAdr : number;
-	rue : string;
-	codePostal: string;
-	ville : string;
+export class Adresse {
+    constructor(
+    public idAdr : number,
+	public rue : string,
+	public codePostal: string,
+	public ville : string ) {}
 }
 
-export interface Client {
-    numero : number;
-	prenom : string;
-	nom: string;
-	adresse : Adresse;
-	telephone : string;
-	email: string;
+export class Client {
+    constructor(
+    public numero : number,
+	public prenom : string,
+	public nom: string,
+	public adresse : Adresse,
+	public telephone : string,
+	public email: string) {}
+   
 }

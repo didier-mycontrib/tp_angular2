@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(exports_1) {
+System.register(['@angular/core', '@angular/http'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, Observable_1;
+    var core_1, http_1;
     var ClientService;
     return {
         setters:[
@@ -17,9 +19,6 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
             },
             function (http_1_1) {
                 http_1 = http_1_1;
-            },
-            function (Observable_1_1) {
-                Observable_1 = Observable_1_1;
             }],
         execute: function() {
             ClientService = (function () {
@@ -28,24 +27,30 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     this._clientUrl = 'app/data/client.json'; // data in static '.json" file
                 }
                 //private _clientUrl = '.../client/ + ...'; // REST call 
-                ClientService.prototype.getClientObservable = function (numCli) {
-                    return this._http.get(this._clientUrl)
-                        .map(function (response) { return response.json(); })
-                        .catch(this.handleErrorObservable);
-                };
-                ClientService.prototype.getClientPromise = function (numCli) {
-                    // return clientPromise; //mock data in current file
-                    return this._http.get(this._clientUrl)
-                        .toPromise()
-                        .then(function (response) { return response.json(); })
-                        .catch(this.handleErrorPromise);
-                    /* .map(response => <Client> response.json());
-                     .toPromise();*/
-                };
-                ClientService.prototype.handleErrorObservable = function (error) {
-                    console.log(error);
-                    return Observable_1.Observable.throw('Server error' + error);
-                };
+                /*
+                 public getClientObservable(numCli: number) : Observable< Client > {
+                   return this._http.get(this._clientUrl)
+                                   .map(response => <Client> response.json())
+                                   .catch(this.handleErrorObservable);
+                 }*/
+                //public getClientPromise(numCli: number) : Promise< Client > {
+                // return clientPromise; //mock data in current file
+                //return this._http.get(this._clientUrl)
+                /*.toPromise()
+                .then(response => <Client> response.json(), this.handleErrorPromise);*/
+                /*
+                                .toPromise()
+                                .then(response => <Client> response.json())
+                                .catch(this.handleErrorPromise);
+                */
+                /* .map(response => <Client> response.json());
+                 .toPromise();*/
+                //}
+                /*
+                 private handleErrorObservable (error: any) {
+                  console.log(error);
+                  return Observable.throw('Server error' + error);
+                }*/
                 ClientService.prototype.handleErrorPromise = function (error) {
                     console.log(error);
                     return Promise.reject('Server error' + error);
@@ -55,7 +60,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     __metadata('design:paramtypes', [http_1.Http])
                 ], ClientService);
                 return ClientService;
-            })();
+            }());
             exports_1("ClientService", ClientService);
         }
     }

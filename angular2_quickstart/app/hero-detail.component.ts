@@ -1,6 +1,10 @@
-import { Component , Input} from '@angular/core';
-import {Hero} from './hero';
 
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params }   from '@angular/router';
+import { Location }                 from '@angular/common';
+
+import {Hero} from './hero';
+import { HeroService } from './hero.service';
 /*
  'hero' property of HeroDetail (Sub)Component must be declared as part of "@Input()"
  and this HeroDetailComponent should be declared in app.module.ts
@@ -8,6 +12,7 @@ import {Hero} from './hero';
 
 
 @Component({
+  moduleId: module.id,
   selector: 'my-hero-detail',
   template:`
    <div *ngIf="hero">
@@ -17,12 +22,46 @@ import {Hero} from './hero';
         <label>name: </label>
         <input [(ngModel)]="hero.name" placeholder="name"/>
       </div>
+     <hr/>
+      <button (click)="goBack()">Back</button>
+     <button (click)="save()">Save</button> <br/> 
     </div>
-  `
+  `/*,
+  providers: [HeroService]*/
  })
-export class HeroDetailComponent {
+export class HeroDetailComponent implements OnInit{
+   msg:string ="";
    @Input()
    public hero: Hero; 
+
+   constructor(
+      private heroService: HeroService,
+      private route: ActivatedRoute,
+      private location: Location
+    ) {}
+
+ngOnInit(): void {
+  this.route.params.forEach((params: Params) => {
+    let id = +params['id'];
+    this.heroService.getHeroPromise(id)
+      .then(hero => this.hero = hero);
+  });
+}
+    
+   public save(): void {
+     /* this.heroService.updatePromise(this.hero)
+         .then(() => this.goBack());*/
+       this.heroService.updateObservable(this.hero)
+         .subscribe(() => this.goBack())
+       }
+
+goBack(): void {
+  this.location.back();
 }
 
-// hero is a property of HeroDetail (Sub)Component
+    /*
+    save(): void {
+      this.heroService.update(this.hero)
+         .then(() => this.msg="updated");
+       }*/
+}

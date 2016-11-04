@@ -1,10 +1,9 @@
-import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component} from '@angular/core';
 
-import {WelcomeComponent} from './welcome.component';
-import {IdentificationComponent} from './identification.component';
-import {IdentifieComponent} from './identifie.component';
 
+/*
+<router-outlet></router-outlet> sera remplacé par le résultat (changeant) de la navigation
+*/
 @Component({
   selector: 'my-app',
   template:`
@@ -17,20 +16,12 @@ import {IdentifieComponent} from './identifie.component';
 				</section>
 			</div>
 			 <footer id="mainFooter" >
-			... status , mentions legales , ... <a [routerLink]="['Welcome']"> retour accueil </a>
+			... status , mentions legales , ... <a routerLink='welcome'> retour accueil </a>
 			</footer>
   `,
-   directives: [ROUTER_DIRECTIVES] ,
    providers: []
 })
-@RouteConfig([
-    //NB: path="relative_url_path" for href , name="logicalName" for indirect <a [routerLink]="LogicalName" />...</>
-    // Welcome child route as default
-    {path: '/welcomeMiniBank',          name: 'Welcome',            component: WelcomeComponent,            useAsDefault: true  },
-    {path: '/identificationClient',     name: 'Identification',     component: IdentificationComponent},
-	{path: '/clientItendifie/...',          name: 'Identifie',          component: IdentifieComponent}
-    // path: '/clientItendifie/:clientId' or path: '/clientItendifie/...' if IdentifieComponent contains subRoutes
-])
+
 export class AppComponent {
  
 }

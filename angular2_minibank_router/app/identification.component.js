@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/router'], function(exports_1) {
+System.register(['@angular/core', '@angular/router'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -24,15 +26,19 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1) {
                     this._router = _router;
                     this.title = "identification client minibank";
                 }
+                IdentificationComponent.prototype.onNavigate = function () {
+                    var link = ['/clientItendifie', this.numClient];
+                    this._router.navigate(link);
+                    //this._router.navigateByUrl(`/clientItendifie/${this.numClient}`); //avec  quote inverse `...` !!!
+                };
                 IdentificationComponent = __decorate([
                     core_1.Component({
-                        template: "\n   <div >\n        <h3> {{title}} </h3> \n\t\t   numClient:<input type=\"text\" [(ngModel)]=\"numClient\"/> <i>(ex: 1)</i> <br/>\n\t\t   password:<input type=\"text\" [(ngModel)]=\"password\"/> <i>(ex: pwd1)</i><br/>\n\t\t   <a [routerLink]=\"['Identifie',  { clientId: numClient }]\" [hidden]=\"password != 'pwd'+numClient\" > vers espace client identifie . </a> <br/>\n          <!-- <a (click)=\"onNavigate()\" [hidden]=\"password != 'pwd'+numClient\" > vers espace client identifie </a> <br/> -->\n\t\t </div>  \n  ",
-                        directives: [router_1.ROUTER_DIRECTIVES]
+                        template: "\n   <div >\n        <h3> {{title}} </h3> \n\t\t   numClient:<input type=\"text\" [(ngModel)]=\"numClient\"/> <i>(ex: 1)</i> <br/>\n\t\t   password:<input type=\"text\" [(ngModel)]=\"password\"/> <i>(ex: pwd1)</i><br/>\n\t\t   <!-- <a routerLink=\"????\" [hidden]=\"password != 'pwd'+numClient\" > vers espace client identifie . </a> <br/> --> \n          <button (click)=\"onNavigate()\" [hidden]=\"password != 'pwd'+numClient\" > vers espace client identifie </button> <br/>\n\t\t </div>  \n  "
                     }), 
                     __metadata('design:paramtypes', [router_1.Router])
                 ], IdentificationComponent);
                 return IdentificationComponent;
-            })();
+            }());
             exports_1("IdentificationComponent", IdentificationComponent);
         }
     }
