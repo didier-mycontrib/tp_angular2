@@ -1,7 +1,7 @@
 {
 "numero" : 1,
-"nom": "Therieur",
-"prenom": "alain",
+"nom": "THERIEUR",
+"prenom": "ALAIN",
 "adresse" : { "idAdr" :1 ,"rue" : "456 - rue elle" , "codePostal" : "75000", "ville" : "Par ici"  },
 "telephone" : "0102030405" ,
 "email" : "alain.therieur@ici-ou-la.fr"

@@ -1,13 +1,8 @@
-import {Component} from '@angular/core';
-//import {Router } from '@angular/router';
-import { ActivatedRoute, Params }   from '@angular/router';
+import {Component , Input, OnInit} from '@angular/core';
+import {ActivatedRoute, Params }   from '@angular/router';
+import {Operation} from '../compte';
+import {CompteService} from '../compte.service';
 
-interface Operation {
-    numero : number;
-	label : string;
-	montant: number;
-	dateOp : string;
-}
 
 
 @Component({
@@ -23,33 +18,24 @@ interface Operation {
         </div>
   `
  })
-export class DernieresOperationsComponent {
-   numSelectedCpt: number = 0;
-   operations : Operation[] = [
-				{
-				"numero" : 1,
-				"label" : "achat xy",
-				"montant" : -50,
-				"dateOp" : "2015-01-20"
-				},
-				{
-				"numero" : 2,
-				"label" : "achat zz",
-				"montant" : -90,
-				"dateOp" : "2015-02-08"
-				},
-				{
-				"numero" : 3,
-				"label" : "salaire",
-				"montant" : 2000,
-				"dateOp" : "2015-03-18"
-				}
-				];
-   constructor(/*private _router: Router,*/
-               private route: ActivatedRoute){
-                   this.route.params.forEach((params: Params) => {
-			           this.numSelectedCpt = Number(params['numSelectedCpt']);
-                       });
-                }					
+export class DernieresOperationsComponent implements OnInit {
+   @Input()     
+   public numSelectedCpt: number;
+    
+   private operations : Operation[] ;
+    
+   constructor(private route: ActivatedRoute,
+               private _compteService : CompteService){ 
+                }
+    	
+    ngOnInit() {      
+       this.fetchOperations();
+    }  
+ 
+    fetchOperations() {   
+      this._compteService.getOperationsOfCompteObservableWithAlternativeTry(this.numSelectedCpt)
+         .subscribe(operations =>this.operations = operations ,
+                    error =>  console.log(error));
+  }				
 }
 

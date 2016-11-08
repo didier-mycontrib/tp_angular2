@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/router'], function(exports_1, context_1) {
+System.register(['@angular/core', '../compte.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,52 +10,58 @@ System.register(['@angular/core', '@angular/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, router_2;
+    var core_1, compte_service_1;
     var ParamVirementComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (router_1_1) {
-                router_1 = router_1_1;
-                router_2 = router_1_1;
+            function (compte_service_1_1) {
+                compte_service_1 = compte_service_1_1;
             }],
         execute: function() {
             ParamVirementComponent = (function () {
-                function ParamVirementComponent(_router, route) {
-                    this._router = _router;
-                    this.route = route;
-                    this.transfert = { "montant": 50, "numCptDeb": 1, "numCptCred": 2 };
-                    //this.clientId = routeParams.get('clientId');
+                function ParamVirementComponent(_compteService) {
+                    this._compteService = _compteService;
+                    this.virementOk = new core_1.EventEmitter();
+                    this.transfert = { "montant": 0, "numCptDeb": 1, "numCptCred": 2, "ok": false };
                 }
-                ParamVirementComponent.prototype.doVirementAndRefresh = function () {
-                    console.log("doVirementAndRefresh() : " + this.transfert.montant);
-                    //simulation (sans ws REST)
-                    /*
-                    for(i=0; i< this.comptes.length; i++){
-                        if(this.comptes[i].numero == this.transfert.numCptDeb){
-                            this.comptes[i].solde -= Number(this.transfert.montant);
-                        }
-                        if(this.comptes[i].numero == this.transfert.numCptCred){
-                            this.comptes[i].solde += Number(this.transfert.montant);
-                        }
+                ParamVirementComponent.prototype.setAndLogMessage = function (virementOk) {
+                    if (virementOk) {
+                        this.message = "le montant de " + this.transfert.montant +
+                            " a bien ete transfere du compte " + this.transfert.numCptDeb +
+                            " vers le compte " + this.transfert.numCptCred;
                     }
-                    
-                    this.message = "le montant de " + this.transfert.montant +
-                                    " a bien ete transfere du compte " + this.transfert.numCptDeb +
-                                      " vers le compte " + this.transfert.numCptCred;
-                                          
-                    this.renderPath="listeComptes";
-                */
+                    else {
+                        this.message = "echec  virement";
+                    }
+                    console.log(this.message);
                 };
-                ;
+                ParamVirementComponent.prototype.doVirementAndRefresh = function () {
+                    var _this = this;
+                    console.log("doVirementAndRefresh() : " + this.transfert.montant);
+                    this._compteService.postVirementObservableWithAlternativeTry(this.transfert)
+                        .subscribe(function (transfertEffectue) {
+                        if (transfertEffectue.ok) {
+                            _this.setAndLogMessage(true);
+                            _this.virementOk.emit({ value: _this.message }); /*fire event with data*/
+                        }
+                        else {
+                            _this.setAndLogMessage(false);
+                        }
+                    }, function (error) { return console.log(error); });
+                };
+                __decorate([
+                    core_1.Output(), 
+                    __metadata('design:type', core_1.EventEmitter)
+                ], ParamVirementComponent.prototype, "virementOk", void 0);
                 ParamVirementComponent = __decorate([
                     core_1.Component({
                         selector: 'param-virement',
                         template: "\n   <div id=\"divVirement\" style=\"background-color:rgb(160,160,250); margin:3px; padding:3px;\" >\n        <h3> parametrage virement </h3> \n\t\t   <label for=\"montant\">montant :</label> <input id=\"montant\" [(ngModel)]=\"transfert.montant\"  /> <br/>\n           <label for=\"numCptDeb\">numCptDeb :</label> <input id=\"numCptDeb\" [(ngModel)]=\"transfert.numCptDeb\"  /> <br/>\n           <label for=\"numCptCred\">numCptCred :</label> <input id=\"numCptCred\" [(ngModel)]=\"transfert.numCptCred\"  /> <br/>\n\t\t  <button (click)=\"doVirementAndRefresh()\">effectuer le virement</button>\n    </div>\n  "
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_2.ActivatedRoute])
+                    __metadata('design:paramtypes', [compte_service_1.CompteService])
                 ], ParamVirementComponent);
                 return ParamVirementComponent;
             }());

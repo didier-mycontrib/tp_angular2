@@ -1,13 +1,7 @@
-import {Component} from '@angular/core';
-import {Router } from '@angular/router';
+import {Component , EventEmitter, Output, OnInit , AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
-
-
-interface Compte {
-    numero : number;
-	label : string;
-	solde: number;	
-}
+import {Compte} from '../compte';
+import {CompteService} from '../compte.service';
 
 
 @Component({
@@ -24,43 +18,39 @@ interface Compte {
         </div>
   ` 
  })
-export class ListeComptesComponent {
-   clientId: number = 0;
-   comptes : Compte[] = [
-						{
-						"numero" : 1,
-						"label" : "compte 1 (courant)",
-						"solde" : 600.0
-						},
-						{
-						"numero" : 2,
-						"label" : "compte 2 (LDD)",
-						"solde" : 3200.0
-						},
-						{
-						"numero" : 3,
-						"label" : "compte 3 (PEL)",
-						"solde" : 6500.0
-						}
-						];  
-  constructor(private _router: Router,
-               private route: ActivatedRoute){
-			   this.clientId = 0;//routeParams.get('clientId');
-   }	
+export class ListeComptesComponent implements OnInit, AfterViewInit{
    
- displayLastOperations(numCpt){
-   // var identifieForThis = this;
-	//this.message = "affichage des operations du compte selectionne : " + numCpt; 	
-    //this.numSelectedCpt = numCpt;	
-/*
-    $http.get('data/operations.json').success(function(data) {
-	    identifieForThis.operations = data;
-	    $log.log("nb operations" + identifieForThis.operations.length)
-	});	
-	*/
-   // this.renderPath="dernieresOperations";
-	  this._router.navigate( ['dernieresOperations', { numSelectedCpt: numCpt }]  );
-}
+    @Output()
+   public selectedCompteEvent : EventEmitter<{value:number}> = new EventEmitter<{value:number}>(); 
+    
+   clientId: number = 0;
+   comptes : Compte[] = null ;
+  constructor( private _compteService : CompteService,
+               private route: ActivatedRoute){
+   }	
+    
+   ngOnInit() {
+      this.route.params.forEach((params: Params) => {
+          this.clientId = Number(params['clientId']); 
+         });
+    //this.fetchComptes(); //maintenant dans ngAfterViewInit()
+    }  
+    
+    ngAfterViewInit(){
+        this.fetchComptes();//refresh
+    }
+ 
+    fetchComptes() {  
+    this._compteService.getComptesOfClientObservableWithAlternativeTry(this.clientId)
+         .subscribe(comptes =>this.comptes = comptes ,
+                    error =>  console.log(error));
+
+  }
+   
+    displayLastOperations(numCpt){
+    	console.log("affichage des operations du compte selectionne : " + numCpt); 	
+        this.selectedCompteEvent.emit({value:numCpt}); // fire event with data
+    }
    
 }
 

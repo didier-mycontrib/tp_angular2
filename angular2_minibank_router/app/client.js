@@ -1,7 +1,7 @@
 System.register([], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var Adresse, Client;
+    var Adresse, Client, ClientAuth;
     return {
         setters:[],
         execute: function() {
@@ -27,6 +27,15 @@ System.register([], function(exports_1, context_1) {
                 return Client;
             }());
             exports_1("Client", Client);
+            ClientAuth = (function () {
+                function ClientAuth(numClient, password, ok) {
+                    this.numClient = numClient;
+                    this.password = password;
+                    this.ok = ok;
+                }
+                return ClientAuth;
+            }());
+            exports_1("ClientAuth", ClientAuth);
         }
     }
 });

@@ -1,6 +1,4 @@
 import {Component} from '@angular/core';
-//import {RouteConfig, RouterOutlet} from 'angular2/router';
-
 
 @Component({
   template:`

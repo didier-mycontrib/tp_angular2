@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/platform-browser', '@angular/forms', '@angular/http', './app-routing.module', './app.component', './welcome.component', './identification.component', './identified/identified.module', './client.service'], function(exports_1, context_1) {
+System.register(['./rxjs-extensions', '@angular/core', '@angular/platform-browser', '@angular/forms', '@angular/http', './app-routing.module', './app.component', './welcome.component', './identification.component', './identified/identified.module', './app.config', './client.service', './compte.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,10 +10,11 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, platform_browser_1, forms_1, http_1, app_routing_module_1, app_component_1, welcome_component_1, identification_component_1, identified_module_1, client_service_1;
+    var core_1, platform_browser_1, forms_1, http_1, app_routing_module_1, app_component_1, welcome_component_1, identification_component_1, identified_module_1, app_config_1, client_service_1, compte_service_1;
     var AppModule;
     return {
         setters:[
+            function (_1) {},
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -41,8 +42,14 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
             function (identified_module_1_1) {
                 identified_module_1 = identified_module_1_1;
             },
+            function (app_config_1_1) {
+                app_config_1 = app_config_1_1;
+            },
             function (client_service_1_1) {
                 client_service_1 = client_service_1_1;
+            },
+            function (compte_service_1_1) {
+                compte_service_1 = compte_service_1_1;
             }],
         execute: function() {
             AppModule = (function () {
@@ -52,7 +59,8 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
                     core_1.NgModule({
                         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, app_routing_module_1.AppRoutingModule, identified_module_1.IdentifiedModule],
                         declarations: [app_component_1.AppComponent, welcome_component_1.WelcomeComponent, identification_component_1.IdentificationComponent],
-                        providers: [client_service_1.ClientService],
+                        providers: [{ provide: app_config_1.MY_APP_CONFIG_TOKEN, useValue: app_config_1.MY_DEV_APP_CONFIG },
+                            client_service_1.ClientService, compte_service_1.CompteService],
                         bootstrap: [app_component_1.AppComponent]
                     }), 
                     __metadata('design:paramtypes', [])

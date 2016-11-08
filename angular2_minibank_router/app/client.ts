@@ -16,3 +16,12 @@ export class Client {
 	public email: string) {}
    
 }
+
+
+export class ClientAuth {
+    constructor(
+    public numClient : number,
+    public password : string,
+    public ok: boolean) {}
+   
+}

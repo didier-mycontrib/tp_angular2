@@ -1,12 +1,6 @@
-import {Component} from '@angular/core';
-import {Router } from '@angular/router';
-import { ActivatedRoute, Params }   from '@angular/router';
-
-interface Transfert {
-    montant : number;
-	numCptDeb : number;
-	numCptCred: number;
-}
+import {Component , Output, EventEmitter} from '@angular/core';
+import {Virement} from '../compte';
+import {CompteService} from '../compte.service';
 
 
 @Component({
@@ -22,30 +16,36 @@ interface Transfert {
   ` 
  })
 export class ParamVirementComponent {
-   transfert : Transfert = { "montant" : 50 , "numCptDeb" : 1 , "numCptCred" : 2 };
-   constructor(private _router: Router,
-               private route: ActivatedRoute){
-			   //this.clientId = routeParams.get('clientId');
+        
+   @Output()
+   public virementOk: EventEmitter<{value:string}> = new EventEmitter<{value:string}>();  
+    
+   message : string ; 
+    
+   transfert : Virement = { "montant" : 0 , "numCptDeb" : 1 , "numCptCred" : 2  , "ok":false};
+   constructor(private _compteService : CompteService){
    }	
+   
+   private setAndLogMessage( virementOk : boolean){
+       if(virementOk){
+           this.message = "le montant de " + this.transfert.montant +
+                    " a bien ete transfere du compte " + this.transfert.numCptDeb +
+                      " vers le compte " + this.transfert.numCptCred;
+           }
+       else {this.message = "echec  virement";
+           }
+      console.log(this.message);
+   } 
+    
    doVirementAndRefresh(){
     console.log("doVirementAndRefresh() : " + this.transfert.montant );
-	//simulation (sans ws REST)
-	/*
-	for(i=0; i< this.comptes.length; i++){
-		if(this.comptes[i].numero == this.transfert.numCptDeb){
-			this.comptes[i].solde -= Number(this.transfert.montant);
-		}
-		if(this.comptes[i].numero == this.transfert.numCptCred){
-			this.comptes[i].solde += Number(this.transfert.montant);
-		}
-	}
-	
-	this.message = "le montant de " + this.transfert.montant +
-                   	" a bien ete transfere du compte " + this.transfert.numCptDeb +
-					  " vers le compte " + this.transfert.numCptCred; 	
-    					  
-    this.renderPath="listeComptes";		
-*/	
-};   
+       
+    this._compteService.postVirementObservableWithAlternativeTry(this.transfert)
+           .subscribe(transfertEffectue =>{ 
+                      if(transfertEffectue.ok) {   this.setAndLogMessage(true); this.virementOk.emit({value:this.message});   /*fire event with data*/ }
+                      else  {   this.setAndLogMessage(false);  }} ,
+                    error =>  console.log(error));
+     
+    }  
 }
 

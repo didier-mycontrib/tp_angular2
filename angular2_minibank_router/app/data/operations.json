@@ -1,19 +1,19 @@
 [
 {
 "numero" : 1,
-"label" : "achat xy",
+"label" : "ACHAT xy",
 "montant" : -50,
 "dateOp" : "2015-01-20"
 },
 {
 "numero" : 2,
-"label" : "achat zz",
+"label" : "ACHAT zz",
 "montant" : -90,
 "dateOp" : "2015-02-08"
 },
 {
 "numero" : 3,
-"label" : "salaire",
+"label" : "SALAIRE",
 "montant" : 2000,
 "dateOp" : "2015-03-18"
 }

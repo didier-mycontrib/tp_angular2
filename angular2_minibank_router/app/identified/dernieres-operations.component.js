@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/router'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router', '../compte.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
+    var core_1, router_1, compte_service_1;
     var DernieresOperationsComponent;
     return {
         setters:[
@@ -19,43 +19,34 @@ System.register(['@angular/core', '@angular/router'], function(exports_1, contex
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (compte_service_1_1) {
+                compte_service_1 = compte_service_1_1;
             }],
         execute: function() {
             DernieresOperationsComponent = (function () {
-                function DernieresOperationsComponent(/*private _router: Router,*/ route) {
-                    var _this = this;
+                function DernieresOperationsComponent(route, _compteService) {
                     this.route = route;
-                    this.numSelectedCpt = 0;
-                    this.operations = [
-                        {
-                            "numero": 1,
-                            "label": "achat xy",
-                            "montant": -50,
-                            "dateOp": "2015-01-20"
-                        },
-                        {
-                            "numero": 2,
-                            "label": "achat zz",
-                            "montant": -90,
-                            "dateOp": "2015-02-08"
-                        },
-                        {
-                            "numero": 3,
-                            "label": "salaire",
-                            "montant": 2000,
-                            "dateOp": "2015-03-18"
-                        }
-                    ];
-                    this.route.params.forEach(function (params) {
-                        _this.numSelectedCpt = Number(params['numSelectedCpt']);
-                    });
+                    this._compteService = _compteService;
                 }
+                DernieresOperationsComponent.prototype.ngOnInit = function () {
+                    this.fetchOperations();
+                };
+                DernieresOperationsComponent.prototype.fetchOperations = function () {
+                    var _this = this;
+                    this._compteService.getOperationsOfCompteObservableWithAlternativeTry(this.numSelectedCpt)
+                        .subscribe(function (operations) { return _this.operations = operations; }, function (error) { return console.log(error); });
+                };
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Number)
+                ], DernieresOperationsComponent.prototype, "numSelectedCpt", void 0);
                 DernieresOperationsComponent = __decorate([
                     core_1.Component({
                         selector: 'dernieres-operations',
                         template: "\n   <div id=\"divDernieresOperations\" style=\"background-color:rgb(250,160,160); margin:3px; padding:3px;\">\n        <h3> dernieres operations du compte {{numSelectedCpt}}</h3> \n\t\t<table border=\"1\">\n\t\t    <tr>  <th> numero </th>  <th> label </th>  <th> montant </th>   <th> date </th> </tr>\n\t\t\t<tr *ngFor=\"let opt of operations\">  <td> {{opt.numero}} </td>  <td> {{opt.label}} </td>  <td> {{opt.montant}} </td> <td> {{opt.dateOp}} </td> </tr>\n\t\t</table>\n       \n        </div>\n  "
                     }), 
-                    __metadata('design:paramtypes', [router_1.ActivatedRoute])
+                    __metadata('design:paramtypes', [router_1.ActivatedRoute, compte_service_1.CompteService])
                 ], DernieresOperationsComponent);
                 return DernieresOperationsComponent;
             }());
