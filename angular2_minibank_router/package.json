@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+    "cp-html-css" : "copyfiles -u 1 src/**/*.html dist ; copyfiles -u 1 src/**/*.css dist ; copyfiles -u 1 src/**/*.json dist",
     "lite": "lite-server",
     "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "tsc:w": "tsc -w",
+    
+    "prestart" : "npm run cp-html-css"
   },
   "licenses": [
     {
