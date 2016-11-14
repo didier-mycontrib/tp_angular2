@@ -47,7 +47,7 @@ export class ListeComptesComponent implements OnInit, AfterViewInit{
 
   }
    
-    displayLastOperations(numCpt){
+    displayLastOperations(numCpt : number){
     	console.log("affichage des operations du compte selectionne : " + numCpt); 	
         this.selectedCompteEvent.emit({value:numCpt}); // fire event with data
     }

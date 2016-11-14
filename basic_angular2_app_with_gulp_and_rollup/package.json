@@ -13,14 +13,7 @@
     "build": "gulp clean && gulp build",
     "build-prod": "gulp clean && gulp build-prod",
     "//" : "-- NB: le build-prod en version gulp n'a pas besoin des fichiers rollup-config.js et vendor-rollup-config.js / config equivalente dans gulpfile.js",
-    
-    "//" : "-- version (historique) -- sans gulp et avec utilisation de rollup-config.js et vendor-rollup-config.js",
-    "rollup-vendor" : "rollup -c vendor-rollup.config.js && tsc --out ./dist/build-es5/vendor-bundle.js --target es5 --allowJs dist/build-es2015/vendor-bundle.js" ,
-    "rollup-app" : "rollup -c rollup.config.js && tsc --out ./dist/build-es5/app-bundle.js --target es5  --allowJs dist/build-es2015/app-bundle.js",
-    "rollup-app-es2015": "rollup  -c rollup.config.js",
-    "es2015-to-es5-app": "tsc --out ./dist/build-es5/app-bundle.js --target es5  --allowJs dist/build-es2015/app-bundle.js",
-    "es2015-to-es5-vendor": "tsc --out ./dist/build-es5/vendor-bundle.js --target es5 --allowJs dist/build-es2015/vendor-bundle.js",
-    "minify": "uglifyjs dist/build-es5/vendor-bundle.js --screw-ie8 --compress --mangle --output dist/bundle-min/vendor-bundle.js *** ERREURS dues au map"
+   
   },
   "licenses": [
     {

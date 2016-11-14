@@ -22,7 +22,7 @@ export class CompteService {
   private getComptesOfClientObservable(numCli: number,firstAlternativeTry : boolean , withMockedData : boolean) : Observable< Compte[] > {
     if(withMockedData)
       return this.mockedComptesObservable;
-    let comptesUrl = null; 
+    let comptesUrl : string = null; 
     if(firstAlternativeTry){
        comptesUrl = this.myAppConfig.api_base_url + this._compteUrlPart +"?numClient=" + numCli;
     }
@@ -48,7 +48,7 @@ export class CompteService {
  private getOperationsOfCompteObservable(numCpt: number,firstAlternativeTry : boolean , withMockedData : boolean) : Observable< Operation[] > {
     if(withMockedData)
       return this.mockedOperationsObservable;
-    let operationsUrl = null; 
+    let operationsUrl : string = null; 
     if(firstAlternativeTry){
        operationsUrl = this.myAppConfig.api_base_url + this._operationUrlPart +"?numCpt=" + numCpt;
     }
@@ -78,7 +78,7 @@ export class CompteService {
        return Observable.of(virement);
      }
        
-     let virementUrl = null;
+     let virementUrl :string = null;
      if(firstAlternativeTry){
        virementUrl = this.myAppConfig.api_base_url + this._virementUrlPart;
          }

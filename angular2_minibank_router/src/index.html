@@ -1,7 +1,7 @@
 <html>
 
   <head>
-    <title>Angular QuickStart</title>
+    <title>Angular2 minibank router app</title>
     <base href="/">
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,14 +10,19 @@
 	<link rel="stylesheet" href="./css/styles.css">
 
     <!-- 1. Load libraries -->
-    <!-- Polyfill(s) for older browsers -->
-    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <!-- Polyfill(s) for older browsers , node_modules replaced by lib -->
+    <script src="lib-dev/core-js/client/shim.min.js"></script>  <!-- avant les autres -->
+    <script src="lib/reflect-metadata/Reflect.js"></script>
+    <script src="lib/zone.js/dist/zone.js"></script>
+     
+    
+    <script src="lib-dev/systemjs/dist/system.src.js"></script>
+    
 
-    <script src="node_modules/zone.js/dist/zone.js"></script>
-    <script src="node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    
-    
+
+  
+   
+
      <!-- 2. Configure SystemJS -->
     <script src="systemjs.config.js"></script>
     <script>

@@ -4,7 +4,8 @@ import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,  // module.id n'est utilisable qu'au sein d'un module commonJs (pas es2015)
+  moduleId: 'dashboard.component',
   selector: 'my-dashboard',
   templateUrl: 'dashboard.component.html',
 })

@@ -23,7 +23,7 @@ export class ClientService {
   private getClientObservable(numCli: number,firstAlternativeTry : boolean , withMockedData : boolean) : Observable< Client > {
     if(withMockedData)
       return this.mockedClientObservable;
-    let clientUrl = null; 
+    let clientUrl : string = null; 
     if(firstAlternativeTry){
        clientUrl = this.myAppConfig.api_base_url + this._clientUrlPart +"/" + numCli;
     }
@@ -55,7 +55,7 @@ export class ClientService {
        return Observable.of(clientAuth);
      }
        
-     let verifyAuthUrl = null;
+     let verifyAuthUrl : string = null;
      if(firstAlternativeTry){
        verifyAuthUrl = this.myAppConfig.api_base_url + this._verifyAuthUrlPart;
          }

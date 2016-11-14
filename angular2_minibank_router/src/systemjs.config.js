@@ -6,12 +6,12 @@
   System.config({
     paths: {
       // paths serve as alias
-      'npm:': 'node_modules/'
+      'npm:': 'lib-dev/' /* 'node_modules/' replaced by 'lib-dev/' , relative to dist/build if bs-config.json */ 
     },
     // map tells the System loader where to look for things
     map: {
       // our app is within the app folder
-      app: 'dist/app',
+      app: 'app' /* relative to dist/build if bs-config.json */   ,
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
       '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
