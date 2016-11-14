@@ -18,9 +18,9 @@ import { HeroService } from './hero.service';
 
 @Component({
   //moduleId: module.id,  // module.id n'est utilisable qu'au sein d'un module commonJs (pas es2015)
-  moduleId: 'heroes.component',
+  //on peut eventuellement compenser cela par un chemin préxifé par "app/" ou autre au niveau de templateUrl
   selector: 'my-heroes',
-  templateUrl: 'heroes.component.html',
+  templateUrl: 'app/heroes.component.html',
     styles:[`
     .selected {  width: 150;  background-color: yellow;    color: blue;
     }

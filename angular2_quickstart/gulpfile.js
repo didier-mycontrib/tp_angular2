@@ -12,7 +12,7 @@ const tscProject = tsc.createProject("tsconfig.json");//prend  en compte les pri
 const tscProjectEs2015 = tsc.createProject("tsconfig-es2015.json");//version -es2015 pour rollup avec conversion es5 
 const gulpUtil = require('gulp-util');
 const rollup = require('rollup-stream'); //pour creer des bundles js au format cjs ou umd ou autres
-const html = require('rollup-plugin-html'); //pour intégrer les .html au rollup/bundle
+//const html = require('rollup-plugin-html'); //pour intégrer les .html au rollup/bundle , non applicable car liaison par decoration transformée interprétée au runtime
 const nodeResolve = require('rollup-plugin-node-resolve'); //for rollup config
 const source = require('vinyl-source-stream');
 //const run = require('gulp-run'); //pour lancer npm run ou autre depuis gulp
@@ -84,8 +84,7 @@ gulp.task('rollup-app', [ 'compile-es2015'], function () {
 	      moduleName: 'app' , // equivalent to --name
 	    plugins: [
                  rollupNG2(),
-	    	    nodeResolve({jsnext: true, main: true }),
-	    	    html({ include: [ '**/*.html'  , '*.html'] })
+	    	    nodeResolve({jsnext: true, main: true })
 	    	    ],
 	    	external: [
 	    	           '@angular/core',
@@ -249,7 +248,7 @@ gulp.task('build-prod', ['copy_resources','copy-libs-prod','bundle-app-min-gz','
     gulp.src("./dist/indexProd.html")
       .pipe(rename("index.html"))
       .pipe(gulp.dest("./dist")); 
-   // del(["dist/indexProd.html" , "dist/systemjs.config.js" , "dist/build-es5" , "dist/build-es2015" , "dist/app" ]);
+   del(["dist/indexProd.html" , "dist/systemjs.config.js" , "dist/build-es5" , "dist/build-es2015" , "dist/app/**/*.js" ]);//garder .html et .css qui accompagnent composants
 });
 
 gulp.task('default', ['build']);

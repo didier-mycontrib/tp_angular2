@@ -6,10 +6,10 @@ import { HeroSearchService } from './hero-search.service';
 import { Hero } from './hero';
 @Component({
   //moduleId: module.id,  // module.id n'est utilisable qu'au sein d'un module commonJs (pas es2015)
-  moduleId: 'hero-search.component',
+  //on peut eventuellement compenser cela par un chemin préxifé par "app/" ou autre au niveau de templateUrl
   selector: 'hero-search',
-  templateUrl: 'hero-search.component.html',
-  styleUrls: [ 'hero-search.component.css' ],
+  templateUrl: 'app/hero-search.component.html',
+  styleUrls: [ 'app/hero-search.component.css' ],
   providers: [HeroSearchService]
 })
 export class HeroSearchComponent implements OnInit {

@@ -246,7 +246,7 @@ gulp.task('build-prod', ['copy_resources','copy-libs-prod','bundle-app-min-gz','
     gulp.src("./dist/indexProd.html")
       .pipe(rename("index.html"))
       .pipe(gulp.dest("./dist")); 
-    del(["dist/indexProd.html" , "dist/systemjs.config.js" , "dist/build-es5" , "dist/build-es2015" , "dist/app" ]);
+    del(["dist/indexProd.html" , "dist/systemjs.config.js" , "dist/build-es5" , "dist/build-es2015" , "dist/app/**/*.js" ]);//garder .html et .css qui accompagnent composants
 });
 
 gulp.task('default', ['build']);
