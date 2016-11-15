@@ -12,7 +12,7 @@
     "compile-es2015": "gulp compile-es2015",
     "build": "gulp clean && gulp build",
     "build-prod": "gulp clean && gulp build-prod",
-    "//" : "-- NB: le build-prod en version gulp n'a pas besoin des fichiers rollup-config.js et vendor-rollup-config.js / config equivalente dans gulpfile.js",
+    "//" : "-- NB: le build-prod en version gulp n'a pas besoin des fichiers rollup-config.js et vendor-rollup-config.js / config equivalente dans gulpfile.js"
    
   },
   "licenses": [
