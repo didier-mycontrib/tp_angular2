@@ -1,4 +1,4 @@
-
+import { Injector, ReflectiveInjector } from '@angular/core';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
@@ -31,6 +31,8 @@ import { HeroService } from './hero.service';
   providers: [HeroService]*/
  })
 export class HeroDetailComponent implements OnInit{
+
+  
    msg:string ="";
    @Input()
    public hero: Hero; 
@@ -41,7 +43,8 @@ export class HeroDetailComponent implements OnInit{
       private location: Location
     ) {}
 
-ngOnInit(): void {
+ngOnInit(): void {           
+      
   this.route.params.forEach((params: Params) => {
     let id = +params['id'];
     this.heroService.getHeroPromise(id)

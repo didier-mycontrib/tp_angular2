@@ -1,0 +1,71 @@
+<div class="container">
+  <div  [hidden]="submitted">
+    <h1>Coords Form</h1>
+    <form *ngIf="active" (ngSubmit)="onSubmit()" #CoordsForm="ngForm">
+    <div class="form-group">
+        <label for="title">title</label>
+        <select class="form-control" id="title"
+                required
+                [(ngModel)]="model.title" name="title" 
+                #title="ngModel" >
+          <option *ngFor="let t of titles" [value]="t">{{t}}</option>
+        </select>
+        <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
+          Title is required (Mr or Ms)* 
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name"
+               required
+               [(ngModel)]="model.name" name="name" #spy
+               #name="ngModel" >
+        <br/>temp class name: {{spy.className}}     
+        <div [hidden]="name.valid || name.pristine" 
+             class="alert alert-danger">
+          Name is required
+        </div>
+      </div>
+       <div class="form-group">
+        <label for="birthday">Birthday</label>
+        <input type="text" class="form-control" id="birthday"
+               required
+               [(ngModel)]="model.birthday" name="birthday"
+               #birthday="ngModel" >
+        <div [hidden]="birthday.valid || birthday.pristine" 
+             class="alert alert-danger">
+          Birthday is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="comment">comment</label>
+        <input type="text" class="form-control" id="comment"
+               [(ngModel)]="model.comment" name="comment" >
+      </div>
+      
+      <button type="submit" class="btn btn-default" [disabled]="!CoordsForm.form.valid">Submit</button>
+      <button type="button" class="btn btn-default" (click)="newCoord()">New Coords</button>
+    </form>
+  </div>
+  <div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+     <div class="row">
+      <div class="col-xs-3">title</div>
+      <div class="col-xs-9  pull-left">{{ model.title }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Name</div>
+      <div class="col-xs-9  pull-left">{{ model.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Birthday</div>
+      <div class="col-xs-9 pull-left">{{ model.birthday }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Comment</div>
+      <div class="col-xs-9 pull-left">{{ model.comment }}</div>
+    </div>
+    <br>
+    <button class="btn btn-default" (click)="submitted=false">Edit</button>
+  </div>
+</div>
