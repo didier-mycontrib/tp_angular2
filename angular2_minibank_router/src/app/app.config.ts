@@ -1,6 +1,6 @@
 import { OpaqueToken } from '@angular/core';
 
-export interface AppConfig {
+export /*interface*/ class AppConfig {
   api_base_url: string;
   alternative_api_base_url : string;
   mode: string;

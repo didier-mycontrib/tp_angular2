@@ -5,7 +5,7 @@ import {Component} from '@angular/core';
 <router-outlet></router-outlet> sera remplacé par le résultat (changeant) de la navigation
 */
 @Component({
-  selector: 'my-app',
+  selector: 'app-root',
   template:`
 			<header id="mainHeader" role="banner">
 		       <h3>Minibank App </h3>

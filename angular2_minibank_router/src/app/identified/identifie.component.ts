@@ -5,6 +5,7 @@ import {Adresse, Client} from '../client';
 import {ClientService} from '../client.service';
 
 @Component({
+ //moduleId: module.id, // module.id (cjs uniquement) si pas webpack ni es2015 sinon ./  ou autre dans templateUrl
   template:`
    <div >
         <h3>  client identifie : {{clientId}}</h3> 

@@ -12,8 +12,7 @@ import { HeroService } from './hero.service';
 
 
 @Component({
-  //moduleId: module.id,  // module.id n'est utilisable qu'au sein d'un module commonJs (pas es2015)
-  moduleId: 'hero-detail.component.component',
+  //moduleId: module.id, // module.id (cjs uniquement) si pas webpack ni es2015 sinon ./  ou autre dans templateUrl
   selector: 'my-hero-detail',
   template:`
    <div *ngIf="hero">

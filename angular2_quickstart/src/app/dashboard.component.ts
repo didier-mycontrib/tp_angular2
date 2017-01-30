@@ -4,10 +4,10 @@ import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
 @Component({
-  //moduleId: module.id,  // module.id n'est utilisable qu'au sein d'un module commonJs (pas es2015)
-  //on peut eventuellement compenser cela par un chemin préxifé par "app/" ou autre au niveau de templateUrl
+  //moduleId: module.id,  // module.id n'est utilisable qu'au sein d'un module commonJs (pas es2015) et pose des problèmes à webpack (de angular CLI)
+  //on peut eventuellement compenser cela par un chemin préxifé par "app/" ou "./" (idéal relatif ok avec webpack) ou autre au niveau de templateUrl
   selector: 'my-dashboard',
-  templateUrl: 'app/dashboard.component.html',
+  templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnInit {
 

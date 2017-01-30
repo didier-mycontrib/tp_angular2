@@ -4,6 +4,7 @@ import {CompteService} from '../compte.service';
 
 
 @Component({
+  //moduleId: module.id, // module.id (cjs uniquement) si pas webpack ni es2015 sinon ./  ou autre dans templateUrl
   selector:'param-virement',
   template:`
    <div id="divVirement" style="background-color:rgb(160,160,250); margin:3px; padding:3px;" >

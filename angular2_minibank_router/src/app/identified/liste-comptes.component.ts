@@ -5,6 +5,7 @@ import {CompteService} from '../compte.service';
 
 
 @Component({
+  //moduleId: module.id, // module.id (cjs uniquement) si pas webpack ni es2015 sinon ./  ou autre dans templateUrl
   selector:'liste-comptes',
   template:`
        <div id="divListeComptes" style="background-color:rgb(160,250,160); margin:3px; padding:3px;">
