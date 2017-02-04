@@ -1,0 +1,23 @@
+<md-toolbar color="primary">
+     <b>{{title}}</b>  
+     <button md-icon-button [md-menu-trigger-for]="menu">
+      <md-icon>more_vert</md-icon>
+    </button>
+</md-toolbar>
+<md-menu x-position=after #menu="mdMenu">
+    <button *ngFor="let me of menuEntries" md-menu-item [routerLink]="me.routerLink"> {{me.label}} </button>
+  </md-menu>
+
+   <md-card>
+     <md-tab-group>
+        <md-tab  *ngFor="let me of menuEntries">
+           <template md-tab-label> 
+               <a class="myNavTabLink" [routerLink]="me.routerLink"> 
+                   {{me.label}}
+               </a>
+           </template>
+         </md-tab>
+    </md-tab-group>
+   </md-card>
+<router-outlet></router-outlet>
+

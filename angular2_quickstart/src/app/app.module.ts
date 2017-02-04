@@ -13,19 +13,21 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 
 import { HeroService }         from './hero.service';
+import { ComputeService }         from './compute.service';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent }     from './heroes.component';
 import { HeroDetailComponent} from './hero-detail.component';
 import { DashboardComponent }   from './dashboard.component';
 import { HeroSearchComponent }   from './hero-search.component';
+import { VatComponent } from './vat.component';
 
 @NgModule({
   imports:      [ BrowserModule , FormsModule , AppRoutingModule,  HttpModule ,
                   InMemoryWebApiModule.forRoot(InMemoryDataService)
                 ],
-  declarations: [ AppComponent , HeroDetailComponent , HeroesComponent , DashboardComponent , HeroSearchComponent],
-  providers:    [ HeroService  ],
+  declarations: [ AppComponent , HeroDetailComponent , HeroesComponent , DashboardComponent , HeroSearchComponent , VatComponent],
+  providers:    [ HeroService  , ComputeService],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

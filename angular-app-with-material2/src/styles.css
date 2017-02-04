@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+/*@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';*/
+
+@import url('deeppurple-amber.css');
+/* @import url('indigo-pink.css'); */
+/* @import url('pink-bluegrey.css'); */
+/* @import url('purple-green.css'); */
+
+
+body {
+  margin: 10px;
+  background-color: #d0d0d0;
+}
+
+h3 {
+	text-decoration: underline;
+}
+/*
+md-toolbar-row {
+  justify-content: space-between;
+}
+
+p {
+  margin: 16px;
+}
+
+[md-raised-button] {
+  color:blue;
+}
+
+md-grid-list {
+  max-width: 1403px;
+  margin: 16px;
+}
+
+md-sidenav-layout {
+  height: 100vh;
+}
+
+md-sidenav {
+  width: 320px;
+}
+
+.icon-20 {
+  font-size: 20px;
+}
+
+ {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*/

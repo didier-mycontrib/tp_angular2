@@ -1,0 +1,11 @@
+angular CLI et material 2 sont encore tous les 2 en version beta
+
+en cas de bug sur ng serve ou ng build , on peut essayer l'option --sourcemap=false
+
+====================
+
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css'; n'étant pas bien interprété dans styles.css
+
+les .css de node_modules/@angular/material/core/theming/prebuilt
+ont été recopiés près de index.html / styles.css pour être directement référencés
+via @import url('deeppurple-amber.css'); ou autres

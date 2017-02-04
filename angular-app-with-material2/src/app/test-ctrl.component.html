@@ -1,0 +1,38 @@
+<h1>{{title}}</h1>
+  <hr/>
+  <input [(ngModel)]='a' />
+  <button md-mini-fab  (click)='onCompute($event)'><md-icon class="md-24">add</md-icon></button>
+  <input [(ngModel)]='b' />
+  = {{res}}
+  
+  <hr/>
+  
+  <md-toolbar color="primary">different sorts of buttons (FLAT, RAISED,ICON,FAB)</md-toolbar>
+   <md-card>
+     <button md-button>FLAT (md-button)</button>
+	<button md-raised-button>RAISED (md-raised-button)</button> <br/>
+	 md-icon-button:<button md-icon-button><md-icon class="md-24">favorite</md-icon></button>
+	 md-fab:<button md-fab><md-icon class="md-24">add</md-icon></button>
+	 md-mini-fab:<button md-mini-fab><md-icon class="md-24">add</md-icon></button>
+ </md-card>
+  <hr/>
+  
+  <md-toolbar color="primary">some css icons via <br/>@import url('https://fonts.googleapis.com/icon?family=Material+Icons');</md-toolbar>
+ <md-card>
+  <b>&lt;md-icon&gt;icon name&lt;/md-icon&gt;</b>
+  <table border='1'>
+  <tr><th>icon name</th><td>mood</td> <td>check circle</td> <td>add</td> <td>favorite</td></tr>
+  <tr><th>icon</th><td><md-icon>mood</md-icon></td> <td><md-icon>check circle</md-icon></td> <td><md-icon>add</md-icon></td> <td><md-icon>favorite</md-icon></td></tr>
+  </table>
+ </md-card>
+  <hr/>
+  
+  <md-toolbar color="primary">differents color="..." </md-toolbar>
+   <md-card>
+    <button md-raised-button >default (without color)</button>
+    <button md-raised-button color="primary">primary</button>
+    <button md-raised-button color="accent">accent</button>
+  </md-card>
+  <hr/>
+
+
