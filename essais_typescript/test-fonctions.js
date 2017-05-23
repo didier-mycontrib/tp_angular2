@@ -53,3 +53,4 @@ function displayColor(p) {
 }
 displayColor([125, 250, 30]);
 displayColor("red");
+//# sourceMappingURL=test-fonctions.js.map

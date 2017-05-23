@@ -1,3 +1,35 @@
+class Compte{
+	numero : number;
+	label: string;
+	solde : number;
+
+	constructor(numero:number=0, libelle:string="?", soldeInitial:number=0.0){
+		this.numero = numero;
+		this.label = libelle;
+		this.solde = soldeInitial;
+	}
+
+
+
+	debiter(montant : number) : void {
+		this.solde -= montant; // this.solde = this.solde - montant;
+	}
+
+	crediter(montant : number) : void {
+		this.solde += montant; // this.solde = this.solde + montant;
+	}
+}
+
+var c1 = new Compte(1,"compte 1",100.0);
+var c2 = new Compte(2,"compte 2");
+var c3 = new Compte(3);
+var c4 = new Compte();
+
+c1.crediter(50.0);
+console.log("numero et label de c1: " + c1.numero + " " + c1.label);
+console.log("solde de c1: " + c1.solde);
+
+
 class CompteEpargne {
 	static taux : number = 1.5;
 	constructor(public numero : number , public solde :number = 0 ){
@@ -13,8 +45,8 @@ console.log("interet=" + compteEpargne.calculerInteret());
 class Animal {
     private _size : number;
     name:string;
-    constructor(theName: string = "default animal name") { 
-	   this.name = theName; 
+    constructor(theName: string = "default animal name") {
+	   this.name = theName;
 	   this.size = 100; //by default
 	}
 	public get size() : number{

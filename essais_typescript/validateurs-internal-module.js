@@ -9,7 +9,7 @@ var Validation;
             return lettersRegexp.test(s);
         };
         return LettersOnlyValidator;
-    })();
+    }());
     Validation.LettersOnlyValidator = LettersOnlyValidator;
     var ZipCodeValidator = (function () {
         function ZipCodeValidator() {
@@ -18,7 +18,7 @@ var Validation;
             return s.length === 5 && numberRegexp.test(s);
         };
         return ZipCodeValidator;
-    })();
+    }());
     Validation.ZipCodeValidator = ZipCodeValidator;
 })(Validation || (Validation = {}));
 // Some samples to try
@@ -42,3 +42,4 @@ strings.forEach(function (s) {
 //<script src="validateurs.js" type="text/javascript" />
 //<script src="module2.js" type="text/javascript" />
 //...
+//# sourceMappingURL=validateurs-internal-module.js.map

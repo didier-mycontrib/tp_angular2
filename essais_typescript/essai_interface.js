@@ -13,7 +13,8 @@ var Student = (function () {
         this.fullname = firstname + " " + lastname + "[" + schoolClass + "]";
     }
     return Student;
-})();
+}());
 var s1 = new Student("cancre", "Ducobu", "Terminale"); //compatible avec interface Person
 msg = greeterPerson(s1);
 console.log(msg);
+//# sourceMappingURL=essai_interface.js.map

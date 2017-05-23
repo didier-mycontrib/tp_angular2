@@ -18,3 +18,4 @@ var Color;
 var c = Color.Green;
 var colorName = Color[1]; // "Green" if "Red" is at [0]
 console.log("c=" + c + " , colorName=" + colorName);
+//# sourceMappingURL=hello_world.js.map
