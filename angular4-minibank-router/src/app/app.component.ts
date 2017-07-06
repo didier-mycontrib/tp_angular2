@@ -6,6 +6,7 @@ import {Component} from '@angular/core';
 */
 @Component({
   selector: 'app-root',
+  styleUrls: ['./app.component.css'],
   template:`
 			<header id="mainHeader" role="banner">
 		       <h3>Minibank App</h3>

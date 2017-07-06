@@ -1,6 +1,6 @@
-import { browser, element, by } from 'protractor';
+import { browser, by, element } from 'protractor';
 
-export class ENgPage {
+export class Angular4MinibankRouterPage {
   navigateTo() {
     return browser.get('/');
   }
@@ -8,5 +8,5 @@ export class ENgPage {
   getParagraphText() {
     //return element(by.css('app-root h1')).getText();
     return element(by.css('app-root #mainHeader h3')).getText();
-  }
+	}
 }

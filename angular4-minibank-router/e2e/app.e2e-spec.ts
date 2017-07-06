@@ -1,13 +1,13 @@
-import { ENgPage } from './app.po';
+import { Angular4MinibankRouterPage } from './app.po';
 
-describe('e-ng App', function() {
-  let page: ENgPage;
+describe('angular4-minibank-router App', () => {
+  let page: Angular4MinibankRouterPage;
 
   beforeEach(() => {
-    page = new ENgPage();
+    page = new Angular4MinibankRouterPage();
   });
 
-  /* it('should display message saying app works', () => {
+ /* it('should display message saying app works', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('app works!');
   }); */
@@ -17,5 +17,4 @@ describe('e-ng App', function() {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('Minibank App');
   });
-
 });
