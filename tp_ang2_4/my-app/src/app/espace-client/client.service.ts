@@ -14,8 +14,8 @@ export class ClientService {
 
   public rechercherClient(numCli : number)
      : Observable<Client>{
-    let urlWsRest = "http://localhost:8282" 
-             + "/minibank/clients/"+numCli;
+    //let urlWsRest = "http://localhost:8282" + "/minibank/clients/"+numCli; //version nodeJs + MongoDB
+	let urlWsRest = "http://localhost:8080" + "/minibank-mvc-rest/mvc/rest/clients/"+numCli; //version Spring-MVC
     this.loadTokenFromLocalStorage();
     return this._http.get(urlWsRest,{headers: this._headers})
            .map(response => response.json())

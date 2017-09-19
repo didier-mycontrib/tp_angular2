@@ -1,0 +1,3 @@
+créer repository de nom "angular" (au sens v4 puis v5 , v6)
+à l'intérieur recréer projet "minibank_router...4" avec dernières versions de angular-cli , angular4
+puis déplacer le code et commit/push

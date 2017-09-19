@@ -15,8 +15,7 @@ export class VerifAuthService {
 
   public verifierAuthentification(verifAuth : VerifAuth)
      : Observable<VerifAuth>{
-    let urlWsRest = 
-    "http://localhost:8282/minibank/verifyAuth";
+    let urlWsRest =  "http://localhost:8282/minibank/verifyAuth"; //version nodeJs
     return this._http.post(urlWsRest,
             JSON.stringify(verifAuth),
             {headers: this._headers} )
