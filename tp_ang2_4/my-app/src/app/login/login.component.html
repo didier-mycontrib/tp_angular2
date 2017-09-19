@@ -1,0 +1,6 @@
+<p>  login </p>
+numClient: <input [(ngModel)]="verifAuth.numClient" /><br/>
+password: <input [(ngModel)]="verifAuth.password" /><br/>
+<button (click)="onLogin($event)">login</button> <br/>
+<a [hidden]="!verifAuth.ok" 
+[routerLink]="['/clientIdentifie',verifAuth.numClient]">espace client identifie</a>

@@ -1,0 +1,37 @@
+<p>tva works!</p>
+ <form #tvaForm="ngForm" 
+     role="form" class="form-horizontal">
+  <div class="form-group">
+     <label for="ht" class="control-label col-sm-4">ht :</label> 
+     <div class="col-sm-8">
+        <input type="number" name="ht" [(ngModel)]='ht'
+              required />   
+     </div>
+  </div>
+  <div class="form-group"> 
+     <label for="taux" class="control-label col-sm-4">taux (en %) :</label>
+     <div class="col-sm-8">
+      <input type="number" name="taux" 
+            [(ngModel)]='taux' required />  
+     </div>
+  </div>
+</form>
+
+<!--<button (click)='onCalcul($event)' >calculer</button> <br/>-->
+<!-- <div *ngIf="ht && taux"> -->
+<div *ngIf="tvaForm.form.valid"> 
+            tva: {{tva}} <br/>
+            ttc: {{ttc}} <br/>
+</div>
+<hr/>
+<a [routerLink]="['/login' ]"> vers login </a> <br/>
+<hr/>
+a : <input  [(ngModel)]='a' />    <br/> 
+b : <input  [(ngModel)]='b' />    <br/> 
+<button (click)='onAddition($event)' class="btn btn-primary" >addition</button>
+<button (click)='onDivision($event)' 
+        [disabled]="!isDivEnabled()"
+         [ngClass]=
+    "isDivEnabled()?'actifEnVert':'inactifEnRouge'">
+         division</button> <br/>
+res: {{res}} <br/>
